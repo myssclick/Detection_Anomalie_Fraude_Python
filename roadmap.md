@@ -3,8 +3,8 @@
 > **Question centrale :** Peut-on détecter des attaques inconnues sans disposer d'exemples de ces attaques pendant l'entraînement ?
 
 - **Contexte :** un SOC veut savoir si l'apprentissage du comportement *normal* suffit à repérer des événements inconnus.
-- **Dataset imposé :** CICIDS2017 **ou** UNSW-NB15 (à choisir en phase 1).
-- **Équipe :** 4 personnes. Chacun doit pouvoir expliquer n'importe quelle partie le jour de la soutenance.
+- **Dataset retenu :** **UNSW-NB15** (le sujet laissait le choix avec CICIDS2017).
+- **Équipe :** 3 personnes (le sujet prévoit 4 : charge à répartir en conséquence). Chacun doit pouvoir expliquer n'importe quelle partie le jour de la soutenance.
 - **Volume indicatif :** 21 h réparties en 7 phases.
 
 ---
@@ -26,7 +26,7 @@
 
 ## Phase 0 — Mise en place
 
-- [ ] Structure du dépôt :
+- [x] Structure du dépôt :
   ```
   data/            # brut (non versionné, voir .gitignore) + instructions de téléchargement
   notebooks/       # notebook principal (livrable)
@@ -37,20 +37,22 @@
   requirements.txt
   roadmap.md
   ```
-- [ ] Créer `.gitignore` (données brutes, checkpoints, `__pycache__`, `.ipynb_checkpoints`).
-- [ ] Environnement Python : `pandas`, `numpy`, `scikit-learn`, `matplotlib`/`seaborn`, `shap`, `jupyter`.
-- [ ] Figer les versions dans `requirements.txt` et définir une graine globale (`RANDOM_STATE = 42`).
-- [ ] Répartir les responsabilités principales entre les 4 membres (sans cloisonner : revue croisée obligatoire).
+- [x] Créer `.gitignore` (données brutes, checkpoints, `__pycache__`, `.ipynb_checkpoints`).
+- [x] Environnement Python : `pandas`, `numpy`, `scikit-learn`, `matplotlib`/`seaborn`, `shap`, `jupyter`. (`.venv`, Python 3.14)
+- [x] Figer les versions dans `requirements.txt` et définir une graine globale (`RANDOM_STATE = 42`).
+- [ ] Répartir les responsabilités principales entre les 3 membres (sans cloisonner : revue croisée obligatoire).
 
 ---
 
 ## Phase 1 — Problématique, dataset et EDA ciblée (2 h)
 
-### 1.1 Choix du dataset
-- [ ] Comparer CICIDS2017 et UNSW-NB15 sur : taille, nombre de familles d'attaques, qualité des labels, facilité de manipulation.
-  - *UNSW-NB15* : colonne `attack_cat` (9 familles), split train/test officiel, taille raisonnable.
-  - *CICIDS2017* : très volumineux (fichiers par jour), problèmes connus (doublons, `Inf`/`NaN`, labels bruités), familles nombreuses.
-- [ ] Documenter et justifier le choix dans le rapport.
+### 1.1 Choix du dataset — ✅ UNSW-NB15
+- [x] Dataset retenu : **UNSW-NB15**.
+- [ ] Justifier le choix dans le rapport face à CICIDS2017 :
+  - *UNSW-NB15* : colonne `attack_cat` (9 familles : Fuzzers, Analysis, Backdoor, DoS, Exploits, Generic, Reconnaissance, Shellcode, Worms), split train/test officiel, taille raisonnable.
+  - *CICIDS2017* : très volumineux (fichiers par jour), problèmes connus (doublons, `Inf`/`NaN`, labels bruités).
+- [ ] Utiliser les fichiers `UNSW_NB15_training-set.csv` / `UNSW_NB15_testing-set.csv` (version partitionnée, ~257k lignes) ; décider si on garde le split officiel ou si on recompose nos propres splits (nécessaire pour l'Exp. 3 zero-day).
+- [ ] Attention aux familles à faible effectif (Worms, Shellcode, Analysis, Backdoor) : en tenir compte pour le choix des familles zero-day et l'interprétation des métriques par famille.
 
 ### 1.2 Compréhension du dataset
 - [ ] Télécharger le dataset, noter la source et la version dans le README.
@@ -75,7 +77,8 @@
 
 ### 2.1 Nettoyage
 - [ ] Supprimer doublons, gérer `NaN`/`Inf`, retirer colonnes constantes et identifiants.
-- [ ] Encoder les variables catégorielles (si UNSW-NB15 : `proto`, `service`, `state`).
+- [ ] Encoder les variables catégorielles `proto`, `service`, `state` (attention à la forte cardinalité de `proto`).
+- [ ] Retirer `id`, `label` et `attack_cat` des features (labels uniquement pour l'évaluation et la construction des splits).
 
 ### 2.2 Stratégie de split (point critique)
 - [ ] Définir **train / validation / test** clairement et les documenter.
@@ -181,7 +184,7 @@
 - [ ] **README** : téléchargement du dataset, installation, ordre d'exécution, versions des bibliothèques, graines.
 
 ### Soutenance (15 min + 5 min de questions)
-- [ ] Répartir la parole entre les 4 membres.
+- [ ] Répartir la parole entre les 3 membres.
 - [ ] Répétition chronométrée.
 - [ ] Chaque membre relit l'ensemble du code et des choix pour pouvoir répondre à toute question.
 - [ ] Préparer les questions probables : choix du seuil, fuite de données, choix des familles zero-day, Q1–Q4.
