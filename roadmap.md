@@ -28,7 +28,7 @@
 
 - [x] Structure du dépôt :
   ```
-  data/            # brut (non versionné, voir .gitignore) + instructions de téléchargement
+  data/            # brut (versionné) + instructions de téléchargement
   notebooks/       # notebook principal (livrable)
   src/             # fonctions réutilisables (chargement, preprocessing, métriques, plots)
   results/         # tableaux CSV et figures générées

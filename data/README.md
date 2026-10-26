@@ -1,25 +1,20 @@
 # Données — UNSW-NB15
 
-Les fichiers de données ne sont pas versionnés (voir `.gitignore`). Chaque membre doit les télécharger localement.
-
-## Téléchargement
-
-1. Aller sur la page officielle du dataset : https://research.unsw.edu.au/projects/unsw-nb15-dataset
-2. Ouvrir le lien de téléchargement, puis le dossier **« Training and Testing Sets »**.
-3. Télécharger les deux fichiers :
-   - `UNSW_NB15_training-set.csv` (~175 000 lignes)
-   - `UNSW_NB15_testing-set.csv` (~82 000 lignes)
-4. Les placer dans `data/raw/` sans les renommer.
-
-Arborescence attendue :
+Les fichiers du dataset sont versionnés dans `data/raw/` : un `git clone` suffit, aucun téléchargement n'est nécessaire.
 
 ```
 data/
 ├── raw/
-│   ├── UNSW_NB15_training-set.csv
-│   └── UNSW_NB15_testing-set.csv
-└── processed/      # fichiers intermédiaires générés par le notebook
+│   ├── UNSW_NB15_training-set.csv   # 175 341 lignes
+│   ├── UNSW_NB15_testing-set.csv    #  82 332 lignes
+│   └── NUSW-NB15_features.csv       # description des variables
+└── processed/      # fichiers intermédiaires générés par le notebook (non versionnés)
 ```
+
+## Source
+
+Fichiers récupérés sur la page officielle du dataset : https://research.unsw.edu.au/projects/unsw-nb15-dataset
+(lien de téléchargement > **CSV Files** > dossier **« Training and Testing Sets »**, et `NUSW-NB15_features.csv` dans **CSV Files**).
 
 ## Colonnes clés
 
@@ -30,6 +25,6 @@ data/
 | `label` | 0 = normal, 1 = attaque — évaluation uniquement |
 | `attack_cat` | Famille d'attaque (Normal, Fuzzers, Analysis, Backdoor, DoS, Exploits, Generic, Reconnaissance, Shellcode, Worms) — évaluation et construction des splits uniquement |
 
-## Référence
+## Citations obligatoires
 
-Moustafa, N. & Slay, J. (2015). *UNSW-NB15: a comprehensive data set for network intrusion detection systems*. Military Communications and Information Systems Conference (MilCIS).
+Les auteurs du dataset demandent de citer deux articles : voir la section « Dataset et citations » du [README principal](../README.md).
