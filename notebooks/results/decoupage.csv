@@ -1,0 +1,6 @@
+,flux,dont attaques
+Pool normal (sans doublons),41836,0
+Pool attaques,95472,95472
+Entraînement détecteurs (N_FIT),20000,0
+Validation,35069,23869
+Test officiel,82332,45332
