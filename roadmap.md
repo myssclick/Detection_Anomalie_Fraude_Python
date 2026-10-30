@@ -121,15 +121,15 @@
 
 **Question :** que se passe-t-il quand le jeu « supposé normal » contient des attaques ?
 
-- [ ] Construire des jeux d'entraînement avec **0 %, 1 %, 2 %, 5 %, 10 %** d'attaques injectées.
-- [ ] Taille totale du train constante entre niveaux ; tirage reproductible (graine fixée).
-- [ ] Idéalement plusieurs tirages par niveau (ex. 3–5 graines) pour obtenir moyenne ± écart-type.
-- [ ] Réentraîner chaque modèle de l'Exp. 1, même jeu de test pour tous les niveaux.
-- [ ] Résultats attendus :
-  - [ ] Courbes contamination vs **Recall**, **FPR**, **F1** (une par modèle).
-  - [ ] Évolution des distributions de scores.
-- [ ] Analyser : quel modèle est le plus robuste ? À partir de quel taux la dégradation devient-elle critique ?
-- [ ] Rédiger selon la structure imposée.
+- [x] Construire des jeux d'entraînement avec **0 %, 1 %, 2 %, 5 %, 10 %** d'attaques injectées.
+- [x] Taille totale du train constante entre niveaux ; tirage reproductible (graine fixée).
+- [x] Idéalement plusieurs tirages par niveau (ex. 3–5 graines) pour obtenir moyenne ± écart-type. (3 graines : 42, 43, 44)
+- [x] Réentraîner chaque modèle de l'Exp. 1, même jeu de test pour tous les niveaux.
+- [x] Résultats attendus :
+  - [x] Courbes contamination vs **Recall**, **FPR**, **F1** (une par modèle).
+  - [x] Évolution des distributions de scores.
+- [x] Analyser : quel modèle est le plus robuste ? À partir de quel taux la dégradation devient-elle critique ?
+- [x] Rédiger selon la structure imposée. → [report/analyse_experience2.md](report/analyse_experience2.md)
 
 ---
 
